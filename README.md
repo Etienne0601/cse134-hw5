@@ -1,1 +1,2 @@
-# cse134-hw2
+# CSE134B-WI23-HW2
+# Name: Etienne Robin
