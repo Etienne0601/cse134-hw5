@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>Etienne's Personal Portfolio</title>
+        <meta name="author" content="Etienne Robin">
+        <meta name="description" content="An example personal portfolio site for CSE 134B">
+        <meta charset="utf-8">
+        <link rel="icon" href="/media/favicon.ico">
+        <style>
+            .flexParent {
+                display: flex;
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <!-- Template for adding a project, to be used later -->
+        <template id="projectTemplate">
+            <h2 id="projectTitle"></h2>
+            <h3>Screenshot</h3>
+            <img id="projectScreenshot">
+            <h3>Details</h3>
+            <ul id="projectDetails"></ul>
+        </template>
+
+        <header class="flexParent">
+            <canvas id="nameHeader" width="600" height="100">Etienne Robin</canvas>
+            <a href="#footer"><h1>Contact Me</h1></a>
+        </header>
+
+        <nav> <!-- Navigation links -->
+            <h2><span>Site Map</span></h2>
+            <menu>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#footer">Contact</a></li>
+            </menu>
+        </nav>
+
+        <!-- Use the svg to create a divider between the header and main content -->
+        <svg width="1000" height="10" fill="blue">
+            <rect width="1000" height="10"></rect>
+        </svg>
+
+        <main class="flexParent">
+            <div id="projects">
+                <h1>Projects</h1>
+                <section id="project1">
+                    <h2>BuJo Studio (2021)</h2>
+                    <iframe
+                        src="https://cse110-sp21-group9.github.io/cse110-sp21-group9/source/frontend/app/page-day/day.html#d-2023-1-29"
+                        title="BuJo Studio Daily Calendar View"
+                        width="1000"
+                        height="900">
+                    </iframe>
+                    <h3>Details</h3>
+                    <ol>
+                        <li><a href="https://en.wikipedia.org/wiki/Bullet_journal">Bullet journal</a> web application created for CSE 110 project</li>
+                        <li><a href="https://github.com/cse110-sp21-group9/cse110-sp21-group9">GitHub</a></li>
+                        <li><a href="https://cse110-sp21-group9.github.io/cse110-sp21-group9/">Working Demo</a></li>
+                    </ol>
+                </section>
+                <br>
+                <hr>
+                <section id="project2">
+                    <h2>Julia Set Fractal Generator (2018)</h2>
+                    <figure>
+                        <img src="/media/fractal.png" alt="Mandelbrot set fractal" width="500">
+                        <figcaption>Mandelbrot set fractal</figcaption>
+                    </figure>
+                    <h3>Details</h3>
+                    <ul>
+                        <li>Generates <a href="https://en.wikipedia.org/wiki/Julia_set">Julia Set</a> from a given startpoint</li>
+                        <li>
+                            Here's part of the code that does the fractal calculation by pixel:
+                            <pre>
+                                <code>
+im = PIL.Image.new('RGB', (int(500*size),int(500*size)), 'white')
+pix = im.load()
+for y in range(0,int(math.floor(500*size))):
+    for x in range (0, int(math.floor(500*size))):
+        zx = xscaled(x)
+        zy = yscaled(y)
+
+        iteration = 0
+        max_iteration = 1000
+    
+        while (zx*zx + zy*zy &lt; 6400  and  iteration &lt; max_iteration):
+            xtemp = zx*zx - zy*zy
+            zy = 2*zx*zy + float(y_entry.get()) #Siegel Disk Fractal -0.390541-0.586788i
+            zx = xtemp + float(x_entry.get())
+            iteration = iteration + 1
+    
+        if (iteration == max_iteration):
+            pix[x,y] = (0,0,0)
+
+        root.update_idletasks()
+        root.update()
+        
+    upscaled = im.resize((1000,1000))
+    upscaled_display = ImageTk.PhotoImage(upscaled)
+    image_id = canvas.create_image((500,500), image=upscaled_display)
+                                </code>
+                            </pre>
+                    </li>
+                    </ul>
+                    <aside>
+                        <details>
+                            <summary>Motivation For Project</summary>
+                            <p>
+                                My motivation for creating this project was because I surprised to learn that Julia set fractals were created by
+                                iterating complex numbers through a very simple mathermatical equation: f(z) = z^2 + c. It was surprisingly easy
+                                to create a user-interactive program that generates Julia sets from a user-provided startpoint and outputs an image.
+                            </p>
+                        </details>
+                    </aside>
+                </section>
+                <br>
+                <hr>
+                <section id="project3">
+                    <h2>Python Snake Game (2017)</h2>
+                    <picture>
+                        <source media="(min-width: 800px)" srcset="/media/snake_game.png">
+                        <source media="(min-width: 500px)" srcset="/media/snake_game_small.png">
+                        <img src="/media/snake_game_small.png" alt="Screenshot of snake game">
+                    </picture>
+                    <p>Here's a director's cut of the snake game before it was complete:</p>
+                    <video
+                        controls
+                        src="/media/snake_game.mp4"
+                        width="620">
+                        Video of snake game
+                    </video>
+                    <h3>Details</h3>
+                    <ul>
+                        <li><a href="https://en.wikipedia.org/wiki/Snake_(video_game_genre)">Snake game</a> created in Python for AP Computer Science Principles</li>
+                    </ul>
+                </section>
+                <br>
+            </div>
+
+            <div id="about">
+                <h1>About</h1>
+                <p>Hi, I'm <b>Etienne</b>, a fourth-year <i>undergraduate</i> student at <strong>UC San Diego</strong> studying <em>Computer Engineering</em>.</p>
+                <table>
+                    <caption>Stuff I know</caption>
+                    <colgroup>
+                        <col span="3">
+                    </colgroup>
+                    <tr>
+                        <th>Languages</th>
+                        <th>Tools</th>
+                        <th>Relevant Coursework</th>
+                    </tr>
+                    <tr>
+                        <td>C/C++</td>
+                        <td>Linux/Unix</td>
+                        <td>Java &amp; OOP</td>
+                    </tr>
+                    <tr>
+                        <td>Java</td>
+                        <td>Bash</td>
+                        <td>Data Structures</td>
+                    </tr>
+                    <tr>
+                        <td>Python</td>
+                        <td>Git</td>
+                        <td>Operating Systems</td>
+                    </tr>
+                    <tr>
+                        <td>JavaScript</td>
+                        <td>Visual Studio Code</td>
+                        <td>Computer Networks</td>
+                    </tr>
+                  </table>
+            </div>
+        </main>
+
+        <footer id="footer">
+            <hr>
+            <h2>Contact Me</h2>
+            <h3>Form</h3>
+            <form>
+                <fieldset>
+                    <legend>Send me a message:</legend>
+                    <label for="name">Full Name:</label>
+                    <input type="text" id="name" name="name"><br>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email"><br>
+                    <input type="text" list="category" name="category"><br>
+                    <datalist id="category">
+                        <option value="Question">
+                        <option value="Report Site Problem">
+                        <option value="Other">
+                    </datalist>
+                    <label for="continent">Which continent are you from?</label>
+                    <select name="continent" id="continent">
+                        <optgroup label="North">
+                            <option value="North America">North America</option>
+                            <option value="Europe">Europe</option>
+                            <option value="Asia">Asia</option>
+                        </optgroup>
+                        <optgroup label="South">
+                            <option value="South America">South America</option>
+                            <option value="Africa">Africa</option>
+                            <option value="Australia/Oceania">Australia&#47;Oceania</option>
+                            <option value="Antarctica">Antarctica</option>
+                        </optgroup>
+                    </select><br>
+                    <label for="message">Message:</label><br>
+                    <textarea id="message" name="message" placeholder="Send me something..."></textarea><br>
+                    <button type="button">Send</button>
+                </fieldset>
+            </form>
+            <h3>Contact Info</h3>
+            <p>Send me an email here: <a href="mailto:etienner0601@gmail.com">etienner0601@gmail.com</a></p>
+            <p>And here's my <a href="https://www.linkedin.com/in/etienne-robin/">LinkedIn</a></p>
+            <audio controls>
+                <source src="/media/Meow.ogg" type="audio/ogg">
+                Meow
+            </audio>
+        </footer>
+
+        <script>
+            const canvas = document.getElementById("nameHeader");
+            const ctx = canvas.getContext("2d");
+            ctx.font = "50px Comic Sans MS";
+            ctx.fillStyle = "orange";
+            ctx.fillText("Etienne Robin", 10, 50);
+        </script>
+    </body>
+
+</html>
