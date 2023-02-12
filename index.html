@@ -3,15 +3,12 @@
 
     <head>
         <title>Etienne's Personal Portfolio</title>
+        <meta charset="utf-8">
         <meta name="author" content="Etienne Robin">
         <meta name="description" content="An example personal portfolio site for CSE 134B">
-        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./styles.css">
         <link rel="icon" href="/media/favicon.ico">
-        <style>
-            .flexParent {
-                display: flex;
-            }
-        </style>
     </head>
 
     <body>
@@ -25,10 +22,20 @@
             <ul id="projectDetails"></ul>
         </template>
 
-        <header class="flexParent">
-            <canvas id="nameHeader" width="600" height="100">Etienne Robin</canvas>
-            <a href="#footer"><h1>Contact Me</h1></a>
+        <header class="flex-parent">
+            <h1 id="my-name">Etienne Robin</h1>
+            <a href="#footer" id="contact-me"><h1>Contact Me</h1></a>
+            <label for="theme-switch">
+                <input type="checkbox" id="theme-switch">
+                <div id="theme-switch-label-dark">
+                    <p>Dark Mode</p>
+                </div>
+                <div id="theme-switch-label-light">
+                    <p>Light Mode</p>
+                </div>
+            </label>
         </header>
+        
 
         <nav> <!-- Navigation links -->
             <h2><span>Site Map</span></h2>
@@ -39,12 +46,7 @@
             </menu>
         </nav>
 
-        <!-- Use the svg to create a divider between the header and main content -->
-        <svg width="1000" height="10" fill="blue">
-            <rect width="1000" height="10"></rect>
-        </svg>
-
-        <main class="flexParent">
+        <main class="flex-parent">
             <div id="projects">
                 <h1>Projects</h1>
                 <section id="project1">
@@ -174,7 +176,7 @@ for y in range(0,int(math.floor(500*size))):
                         <td>Visual Studio Code</td>
                         <td>Computer Networks</td>
                     </tr>
-                  </table>
+                </table>
             </div>
         </main>
 
@@ -223,13 +225,6 @@ for y in range(0,int(math.floor(500*size))):
             </audio>
         </footer>
 
-        <script>
-            const canvas = document.getElementById("nameHeader");
-            const ctx = canvas.getContext("2d");
-            ctx.font = "50px Comic Sans MS";
-            ctx.fillStyle = "orange";
-            ctx.fillText("Etienne Robin", 10, 50);
-        </script>
     </body>
 
 </html>

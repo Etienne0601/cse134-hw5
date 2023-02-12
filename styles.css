@@ -1,0 +1,114 @@
+/* set the variables for light mode first */
+:root {
+    --background-color: white;
+    --text-color: #1c1c1e;
+    --accent-color: #c7c7cc; 
+    --nav-color: #8596e0;
+    --nav-color-hover: #a6a6a8;
+    --modal-color: white;
+    --theme-switch-label-color-hover: blue;
+}
+
+/* switch to dark mode */
+:root:has(#theme-switch:checked) {
+    --background-color: #1c1c1e;
+    --text-color: #f2f2f7;
+    --accent-color: #5c5c5f;
+    --nav-color: #371b23;
+    --nav-color-hover: #48484a;
+    --modal-color: #2c2c2e;
+    --theme-switch-label-color-hover: lightblue;
+}
+
+/* font and background color for everything */
+body {
+    font-family: 'Nunito Sans', sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    margin: 0;
+}
+
+main, nav {
+    padding: 12px;
+}
+
+/* Styling the checkbox input */
+#theme-switch-label-dark, #theme-switch-label-light {
+    width: 100px;
+    height: 40px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: var(--accent-color);
+    cursor: pointer;
+    user-select: none;
+    border-radius: 5px;
+}
+
+#theme-switch-label-light {
+    display: none;
+}
+
+#theme-switch-label-dark:hover {
+    color: var(--theme-switch-label-color-hover);
+    background-color: var(--nav-color-hover);
+}
+
+#theme-switch-label-light:hover {
+    color: var(--theme-switch-label-color-hover);
+    background-color: var(--nav-color-hover);
+}
+
+
+#theme-switch {
+    display: none;
+}
+
+#theme-switch:checked ~ #theme-switch-label-dark {
+    display: none;
+}
+
+#theme-switch:checked ~ #theme-switch-label-light {
+    display: flex;
+}
+
+.flex-parent {
+    display: flex;
+}
+
+header {
+    background-color: var(--nav-color);
+    height: 60px;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+#my-name {
+    width: 1200px;
+    height: 60px;
+    margin: 0;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    text-align: center;
+    padding-left: 30px;
+}
+
+#contact-me {
+    width: 300px;
+    height: 60px;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+#contact-me:hover {
+    color: var(--theme-switch-label-color-hover);
+}
