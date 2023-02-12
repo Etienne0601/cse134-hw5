@@ -26,17 +26,33 @@ body {
     background-color: var(--background-color);
     color: var(--text-color);
     margin: 0;
+
+    animation-name: fadeIn;
+    transition-timing-function: ease;
+    animation-duration: 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 main, nav {
-    padding: 12px;
+    padding: 0.8rem;
 }
 
 /* Styling the checkbox input */
 #theme-switch-label-dark, #theme-switch-label-light {
-    width: 180px;
-    height: 50px;
-    margin: 0;
+    width: 12rem;
+    height: 3rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -44,7 +60,8 @@ main, nav {
     background-color: var(--accent-color);
     cursor: pointer;
     user-select: none;
-    border-radius: 5px;
+    border-radius: 0.5rem;
+    transition: width 1s;
 }
 
 #theme-switch-label-light {
@@ -54,11 +71,13 @@ main, nav {
 #theme-switch-label-dark:hover {
     color: var(--theme-switch-label-color-hover);
     background-color: var(--nav-color-hover);
+    width: 13rem;
 }
 
 #theme-switch-label-light:hover {
     color: var(--theme-switch-label-color-hover);
     background-color: var(--nav-color-hover);
+    width: 13rem;
 }
 
 
@@ -80,29 +99,30 @@ main, nav {
 
 header {
     background-color: var(--nav-color);
-    height: 60px;
+    height: 4rem;
     position: relative;
     justify-content: center;
     align-items: center;
 }
 
 #my-name {
-    width: 1200px;
-    height: 60px;
+    width: 15rem;
+    height: 4rem;
     margin: 0;
     display: flex;
     justify-content: left;
     align-items: center;
     text-align: center;
-    padding-left: 30px;
+    padding-left: 2rem;
 }
 
 #contact-me {
     color: var(--text-color);
     text-decoration: none;
-    width: 180px;
-    height: 50px;
-    margin-right: 70px;
+    width: 12rem;
+    height: 3rem;
+    margin-right: 4rem;
+    margin-left: 60rem;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -110,11 +130,22 @@ header {
     background-color: var(--accent-color);
     cursor: pointer;
     user-select: none;
-    border-radius: 5px;
-
+    border-radius: 0.5rem;
+    transition: width 1s, margin-right 1s, margin-left 1s;
 }
 
 #contact-me:hover {
     color: var(--theme-switch-label-color-hover);
     background-color: var(--nav-color-hover);
+    width: 13rem;
+    margin-right: 3.5rem;
+    margin-left: 59.5rem;
+}
+
+a {
+    color: blue;
+}
+
+a:hover {
+    text-decoration: none;
 }
