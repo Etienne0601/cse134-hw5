@@ -34,8 +34,8 @@ main, nav {
 
 /* Styling the checkbox input */
 #theme-switch-label-dark, #theme-switch-label-light {
-    width: 100px;
-    height: 40px;
+    width: 180px;
+    height: 50px;
     margin: 0;
     display: flex;
     justify-content: center;
@@ -98,17 +98,23 @@ header {
 }
 
 #contact-me {
-    width: 300px;
-    height: 60px;
-    margin: 0;
+    color: var(--text-color);
+    text-decoration: none;
+    width: 180px;
+    height: 50px;
+    margin-right: 70px;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    color: var(--text-color);
-    text-decoration: none;
+    background-color: var(--accent-color);
+    cursor: pointer;
+    user-select: none;
+    border-radius: 5px;
+
 }
 
 #contact-me:hover {
     color: var(--theme-switch-label-color-hover);
+    background-color: var(--nav-color-hover);
 }
