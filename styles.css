@@ -26,6 +26,7 @@ body {
     background-color: var(--background-color);
     color: var(--text-color);
     margin: 0;
+    transition: all .5s ease;
 
     animation-name: fadeIn;
     transition-timing-function: ease;
@@ -61,7 +62,7 @@ main, nav {
     cursor: pointer;
     user-select: none;
     border-radius: 0.5rem;
-    transition: width 1s;
+    transition: all .5s ease;
 }
 
 #theme-switch-label-light {
@@ -71,13 +72,13 @@ main, nav {
 #theme-switch-label-dark:hover {
     color: var(--theme-switch-label-color-hover);
     background-color: var(--nav-color-hover);
-    width: 13rem;
+    transform: scale(1.1);
 }
 
 #theme-switch-label-light:hover {
     color: var(--theme-switch-label-color-hover);
     background-color: var(--nav-color-hover);
-    width: 13rem;
+    transform: scale(1.1);
 }
 
 
@@ -131,15 +132,13 @@ header {
     cursor: pointer;
     user-select: none;
     border-radius: 0.5rem;
-    transition: width 1s, margin-right 1s, margin-left 1s;
+    transition: all .5s ease;
 }
 
 #contact-me:hover {
     color: var(--theme-switch-label-color-hover);
     background-color: var(--nav-color-hover);
-    width: 13rem;
-    margin-right: 3.5rem;
-    margin-left: 59.5rem;
+    transform: scale(1.1);
 }
 
 a {
