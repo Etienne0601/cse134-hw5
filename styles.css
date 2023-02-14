@@ -111,6 +111,11 @@ td {
     transition: all .5s ease;
 }
 
+#theme-switch-label-dark label,
+#theme-switch-label-light label {
+    cursor: pointer;
+}
+
 #theme-switch-label-light {
     display: none;
 }
@@ -137,6 +142,10 @@ td {
 
 #theme-switch:checked ~ #theme-switch-label-light {
     display: flex;
+}
+
+video {
+    width: 100%;
 }
 
 header {
@@ -325,7 +334,7 @@ picture {
 
 /* tablet if the width is greater than 576px but less than 992px */
 @media screen and (min-width: 576px) and (max-width: 992px) {
-    
+
     header h1 {
         font-size: 120%;
     }

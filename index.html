@@ -16,15 +16,13 @@
         <header>
             <h1 id="my-name">Etienne Robin</h1>
             <a href="#footer" id="contact-me"><h1>Contact Me</h1></a>
-            <label for="theme-switch" id="theme-switch-label">
-                <input type="checkbox" id="theme-switch">
-                <div id="theme-switch-label-dark">
-                    <h1>Dark Mode</h1>
-                </div>
-                <div id="theme-switch-label-light">
-                    <h1>Light Mode</h1>
-                </div>
-            </label>
+            <input type="checkbox" id="theme-switch">
+            <div id="theme-switch-label-dark">
+                <h1><label for="theme-switch">Dark Mode</label></h1>
+            </div>
+            <div id="theme-switch-label-light">
+                <h1><label for="theme-switch">Light Mode</label></h1>
+            </div>
         </header>
 
         <main class="flex-parent">
@@ -79,8 +77,7 @@
                     <p>Here's a director's cut of the snake game before it was complete:</p>
                     <video
                         controls
-                        src="/media/snake_game.mp4"
-                        width="100%">
+                        src="/media/snake_game.mp4">
                         Video of snake game
                     </video>
                     <h3>Details</h3>
@@ -138,8 +135,8 @@
                     <input type="text" id="name" name="name"><br>
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email"><br>
-                    <label for="category">Category:</label>
-                    <input type="text" list="category" name="category"><br>
+                    <label for="category-input">Category:</label>
+                    <input type="text" list="category" name="category" id="category-input"><br>
                     <datalist id="category">
                         <option value="Question">
                         <option value="Report Site Problem">
