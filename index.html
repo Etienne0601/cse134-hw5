@@ -6,23 +6,14 @@
         <meta charset="utf-8">
         <meta name="author" content="Etienne Robin">
         <meta name="description" content="An example personal portfolio site for CSE 134B">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
         <link rel="stylesheet" href="./styles.css">
         <link rel="icon" href="/media/favicon.ico">
     </head>
 
     <body>
 
-        <!-- Template for adding a project, to be used later -->
-        <template id="projectTemplate">
-            <h2 id="projectTitle"></h2>
-            <h3>Screenshot</h3>
-            <img id="projectScreenshot">
-            <h3>Details</h3>
-            <ul id="projectDetails"></ul>
-        </template>
-
-        <header class="flex-parent">
+        <header>
             <h1 id="my-name">Etienne Robin</h1>
             <a href="#footer" id="contact-me"><h1>Contact Me</h1></a>
             <label for="theme-switch" id="theme-switch-label">
@@ -35,28 +26,17 @@
                 </div>
             </label>
         </header>
-        
-
-        <nav> <!-- Navigation links -->
-            <h2><span>Site Map</span></h2>
-            <menu>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#footer">Contact</a></li>
-            </menu>
-        </nav>
 
         <main class="flex-parent">
             <div id="projects">
                 <h1>Projects</h1>
                 <section id="project1">
                     <h2>BuJo Studio (2021)</h2>
-                    <iframe
-                        src="https://cse110-sp21-group9.github.io/cse110-sp21-group9/source/frontend/app/page-day/day.html#d-2023-1-29"
-                        title="BuJo Studio Daily Calendar View"
-                        width="1000"
-                        height="900">
-                    </iframe>
+                    <picture>
+                        <source media="(min-width: 992px)" srcset="/media/bujo_studio_full.png">
+                        <source media="(min-width: 576px)" srcset="/media/bujo_studio_tablet.png">
+                        <img src="/media/bujo_studio_mobile.png" alt="Screenshot of bujo studio day view" style="width: auto;">
+                    </picture>
                     <h3>Details</h3>
                     <ol>
                         <li><a href="https://en.wikipedia.org/wiki/Bullet_journal">Bullet journal</a> web application created for CSE 110 project</li>
@@ -68,45 +48,13 @@
                 <hr>
                 <section id="project2">
                     <h2>Julia Set Fractal Generator (2018)</h2>
-                    <figure>
-                        <img src="/media/fractal.png" alt="Mandelbrot set fractal" width="500">
-                        <figcaption>Mandelbrot set fractal</figcaption>
-                    </figure>
+                    <picture>
+                        <source media="(min-width: 576px)" srcset="/media/fractal.png">
+                        <img src="/media/fractal_mobile.png" alt="Mandelbrot set fractal" style="width: auto;">
+                    </picture>
                     <h3>Details</h3>
                     <ul>
                         <li>Generates <a href="https://en.wikipedia.org/wiki/Julia_set">Julia Set</a> from a given startpoint</li>
-                        <li>
-                            Here's part of the code that does the fractal calculation by pixel:
-                            <pre>
-                                <code>
-im = PIL.Image.new('RGB', (int(500*size),int(500*size)), 'white')
-pix = im.load()
-for y in range(0,int(math.floor(500*size))):
-    for x in range (0, int(math.floor(500*size))):
-        zx = xscaled(x)
-        zy = yscaled(y)
-
-        iteration = 0
-        max_iteration = 1000
-    
-        while (zx*zx + zy*zy &lt; 6400  and  iteration &lt; max_iteration):
-            xtemp = zx*zx - zy*zy
-            zy = 2*zx*zy + float(y_entry.get()) #Siegel Disk Fractal -0.390541-0.586788i
-            zx = xtemp + float(x_entry.get())
-            iteration = iteration + 1
-    
-        if (iteration == max_iteration):
-            pix[x,y] = (0,0,0)
-
-        root.update_idletasks()
-        root.update()
-        
-    upscaled = im.resize((1000,1000))
-    upscaled_display = ImageTk.PhotoImage(upscaled)
-    image_id = canvas.create_image((500,500), image=upscaled_display)
-                                </code>
-                            </pre>
-                    </li>
                     </ul>
                     <aside>
                         <details>
@@ -124,15 +72,15 @@ for y in range(0,int(math.floor(500*size))):
                 <section id="project3">
                     <h2>Python Snake Game (2017)</h2>
                     <picture>
-                        <source media="(min-width: 800px)" srcset="/media/snake_game.png">
-                        <source media="(min-width: 500px)" srcset="/media/snake_game_small.png">
-                        <img src="/media/snake_game_small.png" alt="Screenshot of snake game">
+                        <source media="(min-width: 992px)" srcset="/media/snake_game_full.png">
+                        <source media="(min-width: 576px)" srcset="/media/snake_game_tablet.png">
+                        <img src="/media/snake_game_mobile.png" alt="Screenshot of snake game" style="width: auto;">
                     </picture>
                     <p>Here's a director's cut of the snake game before it was complete:</p>
                     <video
                         controls
                         src="/media/snake_game.mp4"
-                        width="620">
+                        width="100%">
                         Video of snake game
                     </video>
                     <h3>Details</h3>
@@ -183,7 +131,6 @@ for y in range(0,int(math.floor(500*size))):
         <footer id="footer">
             <hr>
             <h2>Contact Me</h2>
-            <h3>Form</h3>
             <form>
                 <fieldset>
                     <legend>Send me a message:</legend>
@@ -191,38 +138,20 @@ for y in range(0,int(math.floor(500*size))):
                     <input type="text" id="name" name="name"><br>
                     <label for="email">Email:</label>
                     <input type="email" id="email" name="email"><br>
+                    <label for="category">Category:</label>
                     <input type="text" list="category" name="category"><br>
                     <datalist id="category">
                         <option value="Question">
                         <option value="Report Site Problem">
                         <option value="Other">
                     </datalist>
-                    <label for="continent">Which continent are you from?</label>
-                    <select name="continent" id="continent">
-                        <optgroup label="North">
-                            <option value="North America">North America</option>
-                            <option value="Europe">Europe</option>
-                            <option value="Asia">Asia</option>
-                        </optgroup>
-                        <optgroup label="South">
-                            <option value="South America">South America</option>
-                            <option value="Africa">Africa</option>
-                            <option value="Australia/Oceania">Australia&#47;Oceania</option>
-                            <option value="Antarctica">Antarctica</option>
-                        </optgroup>
-                    </select><br>
                     <label for="message">Message:</label><br>
                     <textarea id="message" name="message" placeholder="Send me something..."></textarea><br>
                     <button type="button">Send</button>
                 </fieldset>
             </form>
             <h3>Contact Info</h3>
-            <p>Send me an email here: <a href="mailto:etienner0601@gmail.com">etienner0601@gmail.com</a></p>
-            <p>And here's my <a href="https://www.linkedin.com/in/etienne-robin/">LinkedIn</a></p>
-            <audio controls>
-                <source src="/media/Meow.ogg" type="audio/ogg">
-                Meow
-            </audio>
+            <p>Send me an email: <a href="mailto:etienner0601@gmail.com">etienner0601@gmail.com</a>, or connect with me on <a href="https://www.linkedin.com/in/etienne-robin/">LinkedIn</a>.</p>
         </footer>
 
     </body>
