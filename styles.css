@@ -1,24 +1,28 @@
 /* set the variables for light mode first */
-body {
+:root {
     --background-color: rgb(240, 238, 238);
     --text-color: #1c1c1e;
-    --accent-color: #c7c7cc; 
+    --accent-color: #c7c7cc;
     --nav-color: #8596e0;
     --nav-color-hover: #a6a6a8;
-    --modal-color: white;
     --theme-switch-label-color-hover: blue;
     --project-background-color: lightblue;
     --hyperlink-color: blue;
 }
 
 /* switch to dark mode */
-body:has(#theme-switch:checked) {
+/*
+    This CSS selector is non standard -- it works in Safari and Chrome, but not Firefox.
+    It's definitely not the right way to implement a dark mode/light mode toggle button
+    but I just wanted to get it to work temporarily without any JavaScript. I will implement
+    this in a better way with JavaScript once we're allowed to use JS in a future assignment.
+*/
+:root:has(#theme-switch:checked) {
     --background-color: #39393c;
     --text-color: #f2f2f7;
     --accent-color: #5c5c5f;
     --nav-color: #371b23;
     --nav-color-hover: #48484a;
-    --modal-color: #2c2c2e;
     --theme-switch-label-color-hover: lightblue;
     --project-background-color: rgb(35, 35, 59);
     --hyperlink-color: red;
