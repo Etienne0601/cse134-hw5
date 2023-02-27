@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>Custom Dialogs</title>
+        <meta charset="utf-8">
+        <meta name="author" content="Etienne Robin">
+        <meta name="description" content="Custom Dialogs Example">
+        <link rel="icon" href="/media/favicon.ico">
+        <link rel="stylesheet" href="./customdialogsstyles.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.1/purify.min.js" integrity="sha512-TU4FJi5o+epsahLtM9OFRvH2gXmmlzGlysk9wtTFgbYbMvFzh3Cw1l3ubnYIvBiZCC/aurRHS408TeEbcuOoyQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script type="module" src="customdialogs.js"></script>
+    </head>
+
+    <body>
+
+        <template id="alert-dialog">
+            <div class="dialogcontainer">
+                <dialog open style="text-align: center;">
+                    <p>Alert pressed!</p>
+                    <form method="dialog">
+                        <button id="alert-ok-button">Ok</button>
+                    </form>
+                </dialog>
+            </div>
+        </template>
+
+        <template id="confirm-dialog">
+            <div class="dialogcontainer">
+                <dialog open style="text-align: center;">
+                    <p>Do you confirm this?</p>
+                    <form method="dialog" style="text-align: right;">
+                        <button id="confirm-cancel-button">Cancel</button>
+                        <button id="confirm-ok-button">Ok</button>
+                    </form>
+                </dialog>
+            </div>
+        </template>
+
+        <template id="prompt-dialog">
+            <div class="dialogcontainer">
+                <dialog open>
+                    <form method="dialog">
+                        <label for="name" style="text-align: left;">What is your name?</label><br>
+                        <input type="text" id="name" name="name" style="width: 25rem;">
+                        <br><br>
+                        <div style="text-align: right;">
+                            <button id="prompt-cancel-button">Cancel</button>
+                            <button id="prompt-ok-button">Ok</button>
+                        </div>
+                    </form>
+                </dialog>
+            </div>
+        </template>
+
+        <button id="alert-button">Alert</button>
+        <button id="confirm-button">Confirm</button>
+        <button id="prompt-button">Prompt</button>
+        <br>
+        <output id="output"></output>
+
+    </body>
+
+</html>

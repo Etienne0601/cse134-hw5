@@ -1,0 +1,17 @@
+.dialogcontainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+dialog {
+    position: relative;
+}
+
+#output {
+    border: double 5px;
+    padding: 5px;
+    margin-top: 5px;
+    display: none;
+}
