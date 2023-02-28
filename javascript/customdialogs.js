@@ -47,13 +47,23 @@ promptBtn.addEventListener("click", function() {
     const promptNode = promptTemplate.content.cloneNode(true);
 
     const formNode = promptNode.firstElementChild.firstElementChild.firstElementChild;
+    const cancelBtn = formNode.lastElementChild.firstElementChild;
+    const okBtn = formNode.lastElementChild.lastElementChild;
+
+    cancelBtn.addEventListener("click", function() {
+        this.form.submitted = false;
+    });
+
+    okBtn.addEventListener("click", function() {
+        this.form.submitted = true;
+    });
 
     formNode.addEventListener("submit", function() {
         document.body.style.backgroundColor = "white";
 
         let res = formNode.children[2].value;
         let clean = DOMPurify.sanitize(res);
-        outputBox.innerHTML = clean ? `Prompt result : ${clean}` : "Prompt result : User didn't enter anything";
+        outputBox.innerHTML = this.submitted ? `Prompt result : ${clean}` : "Prompt result : User didn't enter anything";
         outputBox.style.display = "inline-block";
     });
 
