@@ -22,22 +22,27 @@ const blogEntriesTable = document.getElementById("blog-entries");
 const okButtons = document.querySelectorAll(".ok-buttons");
 const cancelButtons = document.querySelectorAll(".cancel-buttons");
 
+// pre-populate the data store with an array of 2 blog entries if it's empty
+if (!window.localStorage.getItem("entries")) {
+    window.localStorage.setItem("entries", JSON.stringify([
+        {
+            id: 1,
+            title: "Duck Pond",
+            date: "2009-07-16",
+            summary: "Today I rode my bike to the duck pond and then I stared at ducks for a minimum of 7 hours."
+        },
+        {
+            id: 2,
+            title: "School Project",
+            date: "2010-02-22",
+            summary: "Today I finished my 7 year long research project about ducks."
+        }
+    ]));
+}
+
 let nextEntryId = 3;
 
-let entries = [
-    {
-        id: 1,
-        title: "Duck Pond",
-        date: "2009-07-16",
-        summary: "Today I rode my bike to the duck pond and then I stared at ducks for at minimum 7 hours."
-    },
-    {
-        id: 2,
-        title: "School Project",
-        date: "2010-02-22",
-        summary: "Today I finished my 7 year long research project about ducks."
-    }
-];
+let entries = [];
 
 function renderEntries() {
     while (blogEntriesTable.firstChild) {
@@ -99,6 +104,8 @@ createDialogForm.addEventListener("submit", function() {
         });
         nextEntryId++;
         renderEntries();
+        window.localStorage.removeItem("entries");
+        window.localStorage.setItem("entries", JSON.stringify(entries));
     }
 });
 
@@ -122,6 +129,8 @@ editDialogForm.addEventListener("submit", function() {
             console.error("Could not find the matching entry to edit");
         }
         renderEntries();
+        window.localStorage.removeItem("entries");
+        window.localStorage.setItem("entries", JSON.stringify(entries));
     }
 });
 
@@ -135,14 +144,21 @@ deleteDialogForm.addEventListener("submit", function() {
             return item.id != this.toDelete;
         });
         renderEntries();
+        window.localStorage.removeItem("entries");
+        window.localStorage.setItem("entries", JSON.stringify(entries));
     }
 });
 
 // the create entry button should open the create entry dialog
 createEntryBtn.addEventListener("click", function() {
-    //outputBox.style.display = "none";
     document.body.style.backgroundColor = "lightgray";
     createDialog.open = true;
 });
 
-window.addEventListener("load", renderEntries);
+// when the page loads we want to load all the entries from localStorage and
+// add them to the entries array. then we want to render the contents of the
+// entries array to the screen
+window.addEventListener("load", function() {
+    entries = JSON.parse(window.localStorage.getItem("entries"));
+    renderEntries();
+});
