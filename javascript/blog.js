@@ -1,26 +1,24 @@
-const blogEntryTemplate = document.getElementById("blog-entry");
+import {
+    okButtons,
+    cancelButtons,
+    createDialogForm,
+    editDialogForm,
+    deleteDialogForm,
+    createEntryBtn,
+    createDialog,
+    editEntryTitle,
+    editEntryDate,
+    editEntrySummary,
+    createEntryTitle,
+    createEntryDate,
+    createEntrySummary,
+    nextEntryId,
+    entries,
+    setEntries,
+    incrNextEntryId
+} from './globalvars.js';
 
-const createDialog = document.getElementById("create-dialog");
-const editDialog = document.getElementById("edit-dialog");
-const deleteDialog = document.getElementById("delete-dialog");
-
-const createEntryBtn = document.getElementById("create-entry-button");
-const createDialogForm = document.getElementById("create-dialog-form");
-const createEntryTitle = document.getElementById("create-entry-title");
-const createEntryDate = document.getElementById("create-entry-date");
-const createEntrySummary = document.getElementById("create-entry-summary");
-
-const editDialogForm = document.getElementById("edit-dialog-form");
-const editEntryTitle = document.getElementById("edit-entry-title");
-const editEntryDate = document.getElementById("edit-entry-date");
-const editEntrySummary = document.getElementById("edit-entry-summary");
-
-const deleteDialogForm = document.getElementById("delete-dialog-form");
-
-const blogEntriesTable = document.getElementById("blog-entries");
-
-const okButtons = document.querySelectorAll(".ok-buttons");
-const cancelButtons = document.querySelectorAll(".cancel-buttons");
+import {renderEntries} from './display.js';
 
 // pre-populate the data store with an array of 2 blog entries if it's empty
 if (!window.localStorage.getItem("entries")) {
@@ -29,7 +27,7 @@ if (!window.localStorage.getItem("entries")) {
             id: 1,
             title: "Duck Pond",
             date: "2009-07-16",
-            summary: "Today I rode my bike to the duck pond and then I stared at ducks for a minimum of 7 hours."
+            summary: "Today I rode my bike to the duck pond and then I stared at ducks for 7 hours."
         },
         {
             id: 2,
@@ -38,43 +36,6 @@ if (!window.localStorage.getItem("entries")) {
             summary: "Today I finished my 7 year long research project about ducks."
         }
     ]));
-}
-
-let nextEntryId = 3;
-
-let entries = [];
-
-function renderEntries() {
-    while (blogEntriesTable.firstChild) {
-        blogEntriesTable.removeChild(blogEntriesTable.lastChild);
-    }
-
-    for (const entry of entries) {
-        const blogEntryNode = blogEntryTemplate.content.cloneNode(true);
-        blogEntryNode.firstElementChild.children[0].innerHTML = entry.title;
-        blogEntryNode.firstElementChild.children[1].innerHTML = entry.date;
-        blogEntryNode.firstElementChild.children[2].innerHTML = entry.summary;
-
-        // add edit button click event listener
-        blogEntryNode.firstElementChild.children[3].addEventListener("click", function() {
-            console.log("hello");
-            document.body.style.backgroundColor = "lightgray";
-            editDialog.open = true;
-            editDialog.firstElementChild.toEdit = entry.id;
-            // fill in the edit dialog form with the preexisting values
-            editEntryTitle.value = entry.title;
-            editEntryDate.value = entry.date;
-            editEntrySummary.value = entry.summary;
-        });
-
-        // add delete button click event listener
-        blogEntryNode.firstElementChild.children[4].addEventListener("click", function() {
-            document.body.style.backgroundColor = "lightgray";
-            deleteDialog.open = true;
-            deleteDialog.lastElementChild.toDelete = entry.id;
-        });
-        blogEntriesTable.append(blogEntryNode);
-    }
 }
 
 okButtons.forEach(button => {
@@ -102,7 +63,7 @@ createDialogForm.addEventListener("submit", function() {
             date: createEntryDate.value,
             summary: createEntrySummary.value
         });
-        nextEntryId++;
+        incrNextEntryId();
         renderEntries();
         window.localStorage.removeItem("entries");
         window.localStorage.setItem("entries", JSON.stringify(entries));
@@ -140,9 +101,9 @@ deleteDialogForm.addEventListener("submit", function() {
     document.body.style.backgroundColor = "white";
     // delete the blog entry object from the array if ok was pressed
     if (this.submitted) {
-        entries = entries.filter(item => {
+        setEntries(entries.filter(item => {
             return item.id != this.toDelete;
-        });
+        }));
         renderEntries();
         window.localStorage.removeItem("entries");
         window.localStorage.setItem("entries", JSON.stringify(entries));
@@ -159,6 +120,6 @@ createEntryBtn.addEventListener("click", function() {
 // add them to the entries array. then we want to render the contents of the
 // entries array to the screen
 window.addEventListener("load", function() {
-    entries = JSON.parse(window.localStorage.getItem("entries"));
+    setEntries(JSON.parse(window.localStorage.getItem("entries")));
     renderEntries();
 });
