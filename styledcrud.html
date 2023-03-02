@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>Styled CRUD</title>
+        <meta charset="utf-8">
+        <meta name="author" content="Etienne Robin">
+        <meta name="description" content="Simple styled CRUD example">
+        <link rel="icon" href="/media/favicon.ico">
+        <link rel="stylesheet" href="./css/styledcrud.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.0.1/purify.min.js" integrity="sha512-TU4FJi5o+epsahLtM9OFRvH2gXmmlzGlysk9wtTFgbYbMvFzh3Cw1l3ubnYIvBiZCC/aurRHS408TeEbcuOoyQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script type="module" src="./javascript/blog.js"></script>
+    </head>
+
+    <body>
+
+        <template id="blog-entry">
+            <tr style="border-bottom: dotted 3px black;">
+                <td></td>
+                <td></td>
+                <td></td>
+                <td style="border: none;"><button class="edit-button"><img src="./media/pencil-outline-icon.svg" alt="edit button"></button></td>
+                <td style="border: none;"><button class="delete-button"><img src="./media/trash-icon.svg" alt="delete button"></button></td>
+            </tr>
+        </template>
+
+        <header>
+            <h1>Simple Blog</h1>
+        </header>
+    
+        <main>
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Date</th>
+                        <th>Summary</th>
+                        <th style="border-bottom: solid 3px black; border-right: none;"></th>
+                        <th style="border-bottom: solid 3px black; border-right: none; border-left: none;"></th>
+                    </tr>
+                </thead>
+
+                <tbody id="blog-entries"></tbody>
+
+            </table>
+            <br>
+            <div>
+                <button id="create-entry-button">Create Entry</button>
+            </div>
+            
+
+            <dialog id="create-dialog">
+                <form id="create-dialog-form" method="dialog">
+                    <h2 style="text-align: center;">Create</h2>
+                    <label for="create-entry-title">Title</label>
+                    <input type="text" id="create-entry-title" required>
+                    <br>
+                    <label for="create-entry-date">Date</label>
+                    <input type="date" id="create-entry-date" required>
+                    <br>
+                    <label for="create-entry-summary">Summary</label>
+                    <textarea id="create-entry-summary"></textarea>
+                    <br>
+                    <div style="text-align: right;">
+                        <button type="submit" class="cancel-buttons" formnovalidate>Cancel</button>
+                        <button type="submit" class="ok-buttons">Ok</button>
+                    </div>
+                </form>
+            </dialog>
+
+            <dialog id="edit-dialog">
+                <form id="edit-dialog-form" method="dialog">
+                    <h2 style="text-align: center;">Edit</h2>
+                    <label for="edit-entry-title">Title</label>
+                    <input type="text" id="edit-entry-title" required>
+                    <br>
+                    <label for="edit-entry-date">Date</label>
+                    <input type="date" id="edit-entry-date" required>
+                    <br>
+                    <label for="edit-entry-summary">Summary</label>
+                    <textarea id="edit-entry-summary"></textarea>
+                    <br>
+                    <div style="text-align: right;">
+                        <button type="submit" class="cancel-buttons" formnovalidate>Cancel</button>
+                        <button type="submit" class="ok-buttons">Ok</button>
+                    </div>
+                </form>
+            </dialog>
+
+            <dialog id="delete-dialog" style="text-align: center;">
+                <p>Are you sure you want to delete this?</p>
+                <form id="delete-dialog-form" method="dialog" style="text-align: right;">
+                    <button type="submit" class="cancel-buttons">Cancel</button>
+                    <button type="submit" class="ok-buttons">Ok</button>
+                </form>
+            </dialog>
+
+        </main>
+
+    </body>
+
+</html>

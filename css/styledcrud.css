@@ -1,0 +1,84 @@
+table {
+    border: solid 3px black;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+tr {
+    /* border-top: solid 3px black; */
+    border-bottom: dotted 3px black;
+}
+
+th {
+    border: solid 3px black;
+}
+
+td {
+    border-right: solid 3px black;
+    border-left: solid 3px black;
+    padding: 20px;
+}
+
+body {
+    font-family: 'Nunito Sans', sans-serif;
+    background-color: rgb(240, 238, 238);
+    color: #1c1c1e;
+    margin: 0;
+    transition: all .5s ease;
+
+    animation-name: fadeIn;
+    transition-timing-function: ease;
+    animation-duration: 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* main {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    justify-content: center;
+} */
+
+main {
+    width: 75%; /* Can be in percentage also. */
+    height: auto;
+    margin: 0 auto;
+    padding: 10px;
+    position: relative;
+}
+
+header {
+    background-color: #8596e0;
+    display: flex;
+    height: 5rem;
+    width: 100%;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+}
+
+.edit-button, .delete-button {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 5px;
+    margin: 0;
+    padding: 0;
+    border: none;
+    background-color: lightblue;
+    cursor: pointer;
+}
+
+img {
+    width: 2rem;
+    height: 2rem;
+}
