@@ -59,9 +59,9 @@ createDialogForm.addEventListener("submit", function() {
     if (this.submitted) {
         entries.push({
             id: nextEntryId,
-            title: createEntryTitle.value,
-            date: createEntryDate.value,
-            summary: createEntrySummary.value
+            title: DOMPurify.sanitize(createEntryTitle.value),
+            date: DOMPurify.sanitize(createEntryDate.value),
+            summary: DOMPurify.sanitize(createEntrySummary.value)
         });
         incrNextEntryId();
         renderEntries();
@@ -80,9 +80,9 @@ editDialogForm.addEventListener("submit", function() {
         let notFound = true;
         for (const entry of entries) {
             if (entry.id == this.toEdit) {
-                entry.title = editEntryTitle.value;
-                entry.date = editEntryDate.value;
-                entry.summary = editEntrySummary.value;
+                entry.title = DOMPurify.sanitize(editEntryTitle.value);
+                entry.date = DOMPurify.sanitize(editEntryDate.value);
+                entry.summary = DOMPurify.sanitize(editEntrySummary.value);
                 notFound = false;
             }
         }
