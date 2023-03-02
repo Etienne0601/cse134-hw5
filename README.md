@@ -3,4 +3,4 @@
 
 Same as the previous homeworks but with *JavaScript*!
 
-Deployed site URL:
+Deployed site URL: https://earnest-sfogliatella-376fc0.netlify.app/
