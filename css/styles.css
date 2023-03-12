@@ -28,6 +28,22 @@
     --hyperlink-color: red;
 }
 
+#site-map {
+    width: 20rem;
+    padding-top: 0;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+#site-map h1 {
+    text-align: center;
+    margin-bottom: 2.2rem;
+}
+
+li {
+    margin-top: 0.5rem;
+}
+
 /* font and background color for everything */
 body {
     font-family: 'Nunito Sans', sans-serif;
